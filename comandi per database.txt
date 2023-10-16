@@ -3,8 +3,13 @@ SELECT nome_cliente , cognome_cliente , data_di_nascita FROM public.clienti WHER
 2.estrarre il numero delle fatture con iva al 20%
 SELECT tipologia , numero_fattura FROM public.fatture WHERE iva = '20%'
 3.riportare il numero di fatture e la somma dei relativi importi divisi per anno di fatturazione
-??
+SELECT date_part('year' , data_fattura), count(*) , sum(importo)
+FROM public.fatture group by date_part('year' ,  data_fattura)
 4.estrarre i prodotti attivati nel 2017 e che sono in produzione oppure in commercioù
 SELECT * FROM public.prodotti WHERE (in_commercio = true OR in_produzione = true) IN (data_attivazione BETWEEN '2017-01-01' AND '2018-01-01') 
+5 considerando soltanto le fatture con iva al 20 per cento , estrarre il numero di fatture per ogni anno
+
+9. estrarre il numero di clienti nati nel 1980 che hanno almeno una fattura superiore ai 50 euro 
+
 
 
